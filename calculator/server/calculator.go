@@ -11,7 +11,12 @@ func (s *Server) Sum(ctx context.Context, in *pb.SumRequest) (*pb.SumResponse, e
 
 	log.Printf("greet func was invoked with %v", in)
 
+	var sum int32
+	for _, n := range in.Num {
+		sum += n
+	}
+
 	return &pb.SumResponse{
-		Result: in.Num + in.Num2,
+		Result: sum,
 	}, nil
 }
