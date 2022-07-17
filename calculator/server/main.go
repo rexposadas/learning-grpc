@@ -11,7 +11,7 @@ import (
 var addr string = "0.0.0.0:50051"
 
 type Server struct {
-	pb.SumServiceServer
+	pb.CalculatorServiceServer
 }
 
 func main() {
@@ -23,7 +23,7 @@ func main() {
 	log.Println("listening on ", addr)
 
 	s := grpc.NewServer()
-	pb.RegisterSumServiceServer(s, &Server{})
+	pb.RegisterCalculatorServiceServer(s, &Server{})
 
 	if err = s.Serve(lis); err != nil {
 		log.Printf("failed to serve %v", err)

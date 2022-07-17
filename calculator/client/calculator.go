@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func doSum(c pb.SumServiceClient) {
+func doSum(c pb.CalculatorServiceClient) {
 	log.Println("doSum invoked")
 
 	res, err := c.Sum(context.Background(), &pb.SumRequest{
