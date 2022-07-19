@@ -9,7 +9,7 @@ import (
 
 func (s *Server) Sum(ctx context.Context, in *pb.SumRequest) (*pb.SumResponse, error) {
 
-	log.Printf("greet func was invoked with %v", in)
+	log.Printf("sum func was invoked with %v", in)
 
 	var sum int32
 	for _, n := range in.Num {

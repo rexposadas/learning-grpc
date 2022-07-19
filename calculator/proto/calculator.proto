@@ -10,6 +10,15 @@ message SumResponse {
   int32 result = 1;
 }
 
+message PrimeRequest {
+  int32 num = 1;
+}
+
+message PrimeResponse {
+  int32 result = 1; // There will be multiple of these streamed one at a time to the client
+}
+
 service CalculatorService{
   rpc Sum (SumRequest) returns (SumResponse);
+  rpc Prime (PrimeRequest) returns (stream PrimeResponse);
 }
