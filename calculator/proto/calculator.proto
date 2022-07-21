@@ -18,7 +18,16 @@ message PrimeResponse {
   int32 result = 1; // There will be multiple of these streamed one at a time to the client
 }
 
+message AvgRequest {
+  int32 num = 1;
+}
+
+message AvgResponse {
+  double result = 1;
+}
+
 service CalculatorService{
   rpc Sum (SumRequest) returns (SumResponse);
   rpc Prime (PrimeRequest) returns (stream PrimeResponse);
+  rpc Avg(stream AvgRequest) returns (AvgResponse);
 }

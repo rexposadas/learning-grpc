@@ -18,7 +18,7 @@ func (s *Server) Prime(in *pb.PrimeRequest, stream pb.CalculatorService_PrimeSer
 	return nil
 }
 
-// Get all prime factors of a given number n
+// PrimeFactors get all prime factors of a given number n
 func PrimeFactors(n int) (pfs []int) {
 	// Get the number of 2s that divide n
 	for n%2 == 0 {
