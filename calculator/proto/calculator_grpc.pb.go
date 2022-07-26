@@ -38,7 +38,7 @@ func NewCalculatorServiceClient(cc grpc.ClientConnInterface) CalculatorServiceCl
 
 func (c *calculatorServiceClient) Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error) {
 	out := new(SumResponse)
-	err := c.cc.Invoke(ctx, "/sum.CalculatorService/Sum", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/calculator.CalculatorService/Sum", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *calculatorServiceClient) Sum(ctx context.Context, in *SumRequest, opts 
 }
 
 func (c *calculatorServiceClient) Prime(ctx context.Context, in *PrimeRequest, opts ...grpc.CallOption) (CalculatorService_PrimeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[0], "/sum.CalculatorService/Prime", opts...)
+	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[0], "/calculator.CalculatorService/Prime", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +78,7 @@ func (x *calculatorServicePrimeClient) Recv() (*PrimeResponse, error) {
 }
 
 func (c *calculatorServiceClient) Avg(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_AvgClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[1], "/sum.CalculatorService/Avg", opts...)
+	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[1], "/calculator.CalculatorService/Avg", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +112,7 @@ func (x *calculatorServiceAvgClient) CloseAndRecv() (*AvgResponse, error) {
 }
 
 func (c *calculatorServiceClient) Max(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_MaxClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[2], "/sum.CalculatorService/Max", opts...)
+	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[2], "/calculator.CalculatorService/Max", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -192,7 +192,7 @@ func _CalculatorService_Sum_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sum.CalculatorService/Sum",
+		FullMethod: "/calculator.CalculatorService/Sum",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CalculatorServiceServer).Sum(ctx, req.(*SumRequest))
@@ -277,7 +277,7 @@ func (x *calculatorServiceMaxServer) Recv() (*MaxRequest, error) {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CalculatorService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "sum.CalculatorService",
+	ServiceName: "calculator.CalculatorService",
 	HandlerType: (*CalculatorServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
