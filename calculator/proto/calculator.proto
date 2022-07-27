@@ -34,10 +34,23 @@ message MaxResponse {
   int32 num = 1;
 }
 
+message SqrtRequest {
+  int32 num = 1; // could be unit32
+}
+
+message SqrtResponse {
+  double result = 1;
+}
+
 
 service CalculatorService{
+  // Examples of different ways client and server can communicate.
   rpc Sum (SumRequest) returns (SumResponse);
   rpc Prime (PrimeRequest) returns (stream PrimeResponse);
   rpc Avg(stream AvgRequest) returns (AvgResponse);
   rpc Max(stream MaxRequest) returns (stream MaxResponse);
+
+  // Example of error handling.
+
+  rpc Sqrt(SqrtRequest) returns (SqrtResponse);
 }

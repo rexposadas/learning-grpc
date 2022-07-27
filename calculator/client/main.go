@@ -20,5 +20,5 @@ func main() {
 
 	c := pb.NewCalculatorServiceClient(conn)
 
-	doMax(c)
+	doSqrt(c, -10)
 }
