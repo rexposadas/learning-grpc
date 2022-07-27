@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	pb "github.com/rexposadas/learning-grpc/greet/proto"
 	"google.golang.org/grpc"
@@ -19,5 +20,6 @@ func main() {
 	defer conn.Close()
 
 	c := pb.NewGreetServiceClient(conn)
-	doGreetEveryone(c)
+
+	doGreetWithDeadline(c, 1*time.Second)
 }
